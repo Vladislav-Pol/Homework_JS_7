@@ -14,7 +14,7 @@ function Contacts(){
             "1 - Создать новый контакт\n\n" +
             "2 - Показать список контактов\n\n" +
             "3 - Найти контакт и показать его данные\n\n" +
-            "4 - Удалить контакт\n\n" +
+//            "4 - Удалить контакт\n\n" + //todo написать реализацию
             "5 - Выйти из справочника контактов\n(справочник буде  недоступен)")
         switch (operation){
             case "1":
@@ -75,7 +75,7 @@ function Contacts(){
     this.validateAge = function (){//todo написать реализацию
 
     }
-    this.searchContact = function (searchValue){//todo написать реализацию
+    this.searchContact = function (searchValue){
         let result = [];
         for (let each of contacts.contactsList)
             if (each.foolName.indexOf(searchValue) != -1)
