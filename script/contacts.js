@@ -48,15 +48,24 @@ function Contacts(){
             phone = prompt("введите телефон контакта", "+375 29 123 45 67"),
             email = prompt("введите электронную почту контакта", "test@test.test");
 
-        this.contactsList[`${foolName}`] = new Contact(foolName, age, phone, email);
+        this.contactsList.push(new Contact(foolName, age, phone, email));
     }
-    this.showContactDetail = function (){//todo написать реализацию
-
+    this.showContactDetail = function (){
+        let searchValue = prompt("Введите имя контакта");
+        let searchResult = this.searchContact(searchValue);
+        let resultText = "";
+        for (let each of searchResult){
+            resultText += "\n\nФИО - " + each.foolName;
+            resultText += "\nВозраст - " + each.age;
+            resultText += "\nТелефон - " + each.phone;
+            resultText += "\nАдрес эл. почты - " + each.email;
+        }
+        alert(resultText);
     }
     this.showContactsList = function (){
         let message = "";
-        for (let item in this.contactsList)
-            message += `${item}\n`
+        for (let item of this.contactsList)
+            message += `${item.foolName}\n`
         alert(message == "" ? "Список контактов пуст" : message)
     }
     this.deleteContact = function (){//todo написать реализацию
@@ -66,9 +75,12 @@ function Contacts(){
     this.validateAge = function (){//todo написать реализацию
 
     }
-
-    this.uniqueness = function (data){//todo написать реализацию
-
+    this.searchContact = function (searchValue){//todo написать реализацию
+        let result = [];
+        for (let each of contacts.contactsList)
+            if (each.foolName.indexOf(searchValue) != -1)
+                result.push(each)
+        return result
     }
 
 }
